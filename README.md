@@ -20,7 +20,7 @@ Embeddings create a vector representation of a piece of text. This is useful bec
 
 This script is specifically written to help you interact with embedding model from OpenAI. 
 
-For information, check this [documentation](https://python.langchain.com/docs/modules/data_connection/text_embedding/).
+For more information, check this [documentation](https://python.langchain.com/docs/modules/data_connection/text_embedding/).
 
 - run the script: `python create_index.py`
 - enter the absolute path of PDF file that you want to create index for
