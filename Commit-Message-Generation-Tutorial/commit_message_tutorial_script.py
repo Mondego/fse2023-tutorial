@@ -10,6 +10,9 @@ Original file is located at
 # Importing the OpenAI library
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Initialize the OpenAI client with your API key
 api_key = os.getenv('OPENAI_API_KEY')
