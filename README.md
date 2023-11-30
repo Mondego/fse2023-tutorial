@@ -2,7 +2,7 @@
 
 ### Setup
 
-- required python version `3.10`
+- required python version `3.10` or higher
 
 - install required libraries
     ```bash
