@@ -1,6 +1,4 @@
 import os
-import json
-from pathlib import Path
 from dotenv import load_dotenv
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -42,25 +40,21 @@ def split(raw_text):
   texts = text_splitter.split_text(raw_text)
   return texts;
 
-
 def main():
-    while True: 
-        file_path = input("Enter path to PDF file for indexing: ")
-        file_path = file_path.strip()
-        # Extract the file name from the input_file_path without the extension
-        input_file_name, file_extension = os.path.splitext(os.path.basename(file_path))
-        if file_extension != '.pdf':
-            print('Error: PDF document is required!')
-        else:
-            out_file = f'{input_file_name}_index'
+      current_file_path = os.path.abspath(__file__)
+      # Extract the file name from the input_file_path without the extension
+      file = "papers/soft_arch.pdf"
+      file_name, file_extension = os.path.splitext(os.path.basename(file))
+      file_path = os.path.join(os.path.dirname(current_file_path),file)
+      out_file = f'{file_name}'
 
-            # download embeddings from OpenAI
-            embeddings = OpenAIEmbeddings()
+      # download embeddings from OpenAI
+      embeddings = OpenAIEmbeddings()
 
-            pages = load_data_from_pdf(file_path)
-            db = FAISS.from_documents(pages, embeddings)
-            db.save_local("faiss_index", out_file)
-            print('- - - - embedding is done - - - -')
+      pages = load_data_from_pdf(file_path)
+      db = FAISS.from_documents(pages, embeddings)
+      db.save_local("rag_tutorial/faiss_index", out_file)
+      print('- - - - embedding is done - - - -')
 
 if __name__ == "__main__":
     main()
