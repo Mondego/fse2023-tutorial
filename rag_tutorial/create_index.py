@@ -53,7 +53,7 @@ def main():
 
       pages = load_data_from_pdf(file_path)
       db = FAISS.from_documents(pages, embeddings)
-      db.save_local("rag_tutorial/faiss_index", out_file)
+      db.save_local("faiss_index", out_file)
       print('- - - - embedding is done - - - -')
 
 if __name__ == "__main__":

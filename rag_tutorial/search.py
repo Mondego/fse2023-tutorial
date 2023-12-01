@@ -6,7 +6,7 @@ from langchain.vectorstores import FAISS
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-index_folder_path = 'rag_tutorial/faiss_index'
+index_folder_path = 'faiss_index'
 
 def search_local(index_name, question):
     embeddings = OpenAIEmbeddings()
