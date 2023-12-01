@@ -23,6 +23,7 @@ def search_local(index_name, question):
         Answer is: 
     '''.format(question, retrieved_docs)
 
+    print(f'PROMPT: {prompt}\n')
     answer = (llm.invoke(prompt)).strip()
     return answer
 
