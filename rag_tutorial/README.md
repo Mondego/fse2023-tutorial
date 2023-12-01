@@ -15,6 +15,9 @@ Embeddings create a vector representation of a piece of text. This is useful bec
 This script is specifically written to help you interact with embedding model from OpenAI. For more information, check this [documentation](https://python.langchain.com/docs/modules/data_connection/text_embedding/).
 
 - run 
+    ```
+    cd rag_tutorial
+    ```
 
     ```
     python create_index.py
