@@ -19,13 +19,17 @@ load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=api_key)
 
-prompt = "Generate a commit message for this diff:\n"
+#
+# THE PROMPT
+#  
+PROMPT = "Generate a commit message for this diff:\n"
+
 # Read the input file
 with open('Commit_Messages.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     n = 2
     for row in reader:
-        prompt += row["Code Change"] 
+        prompt = PROMPT + row["Code Change"] 
 
         # Send the user input to OpenAI and get a response
         response = client.chat.completions.create(
@@ -65,6 +69,6 @@ with open('Commit_Messages.csv', newline='') as csvfile:
             # Handle cases where no response is received
             print("No response from the assistant.")
         n += 1
-        
+
 # Print a message when the program is terminated
 print("Program exited.")
