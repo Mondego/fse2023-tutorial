@@ -9,7 +9,7 @@
     pip install -r requirements.txt
     ```
 
-- create `.env` file, put OpenAI API key 
+- in each exercise folder create a local `.env` file, put the OpenAI API key 
     ```
     OPENAI_API_KEY=''
     ```
