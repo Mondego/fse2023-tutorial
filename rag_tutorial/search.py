@@ -24,6 +24,7 @@ def search_local(index_name, question):
     '''.format(question, retrieved_docs)
 
     print(f'PROMPT: {prompt}\n')
+    
     answer = (llm.invoke(prompt)).strip()
     return answer
 
