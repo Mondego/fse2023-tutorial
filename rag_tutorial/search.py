@@ -8,6 +8,14 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 index_folder_path = 'faiss_index'
 
+class Document:
+    def __init__(self, page_content, metadata):
+        self.page_content = page_content
+        self.metadata = metadata
+
+def extract_and_format_page_content(documents):
+    return '\n'.join([f"Document {i + 1}: {doc.page_content}\n" for i, doc in enumerate(documents)])
+
 def search_local(index_name, question):
     embeddings = OpenAIEmbeddings()
     # load stored vector database
@@ -16,12 +24,13 @@ def search_local(index_name, question):
     # search 
     retrieved_docs = db.similarity_search(question)
     llm = OpenAI(openai_api_key=OPENAI_API_KEY)
+    format_documents = extract_and_format_page_content(retrieved_docs)
 
     prompt = '''
         Question: {}\n
-        Documents: {}\n
+        {}\n
         Answer is: 
-    '''.format(question, retrieved_docs)
+    '''.format(question, format_documents)
 
     print(f'PROMPT: {prompt}\n')
     
